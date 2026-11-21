@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: birthdays-app/birthdays-app
+
 jobs:
   build-windows:
     runs-on: windows-latest
@@ -18,7 +22,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: dist/*.exe
+          path: birthdays-app/birthdays-app/dist/*.exe
 
   build-android:
     runs-on: ubuntu-latest
@@ -41,4 +45,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: birthdays-app/birthdays-app/android/app/build/outputs/apk/debug/app-debug.apk
